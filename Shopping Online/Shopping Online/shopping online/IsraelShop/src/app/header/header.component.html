@@ -1,0 +1,24 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home">
+      <img src="/assets/img/shopIcon.png" alt="" width="50" height="50">
+      <span class="header-title">IsraelShop</span>
+    </a>
+    <div class="d-flex justify-content-between">
+      <div col>
+        <div class="card">
+      <div class="grid header-grid">
+        <div class="row">
+          <div><p class="header-text">Phone: 052-2323232</p></div>
+        </div>
+        <div class="row">
+          <div><p class="header-text">Email: contact@israelshop.co.il</p></div>
+        </div>
+      </div>
+    </div>
+      <div class="w-100"></div>
+        <div *ngIf="displayHelloGuest"><p class="header-text header-guest">Hello {{ username }}</p></div>
+    </div>
+    </div>
+  </div>
+</nav>

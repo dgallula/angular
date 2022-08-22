@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row rowtop">
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="card">
+        <div class="row">
+          <div class="col-12 text-center btn-shopping" *ngIf="loginSuccess && showStartShopping">
+            <a routerLink="/shopping" (click)="checkIfOpenCartExist()" class="btn btn-primary btn-lg">Start shopping</a>
+          </div>
+          <div *ngIf="loginSuccess && !showStartShopping">
+            <div class="card cart-title" *ngIf="!userIsAdmin">
+              <div class="card-body">
+                  <h5 class="card-title">You have an open cart</h5>
+                  <p class="card-text">Open the: {{ currentCartDate | date:'medium'}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 text-center btn-shopping" *ngIf="loginSuccess && !showStartShopping">
+            <a *ngIf="!userIsAdmin" routerLink="/shopping" class="btn btn-success btn-lg">Resume shopping</a>
+            <a *ngIf="userIsAdmin" routerLink="/shopping" class="btn btn-success btn-lg">Manage shop</a>
+          </div>
+          <div class="col-12">
+          <div class="alert alert-warning" role="alert" *ngIf="loginFailure && error != ''">
+            <div class="errorTitle">{{ error }}</div>
+          </div>
+        </div>
+        </div>
+        <div class="row" *ngIf="showForm">
+          <div class="col-12 offset-lg-2 offset-md-2 offset-sm-1">
+            <p class="form-title">Registred?</p>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+              <div class="form-row">
+                <div class="mb-3 col-md-8">
+                  <input type="text" class="form-control" formControlName="id"  autocomplete="off" placeholder="User Name...">
+                </div>
+                <div class="mb-3 col-md-8">
+                  <input type="password" class="form-control" formControlName="password"  autocomplete="off" placeholder="Password...">
+                </div>
+              </div>
+              <div class="row btn-margin">
+              <div class="col-5">
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+              </div>
+              <div class="col-7">
+                <a routerLink="/signup" class="btn btn-link">Signup</a>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+        <div class="row" *ngIf="loginSuccess && showStartShopping">
+          <div class="col-12">
+            <p class="first-purchase">Welcome to your first purchase</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-header card-image">
+          <img src="/assets/img/fruits.jpg" alt="">
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p class="title">Our mission at <cite title="Source Title">IsraelShop:</cite></p>
+            <footer class="blockquote-footer">To simplify your daily life by delivering fresh market products directly to your home. Eat better while enjoying cooking, it's not that complicated: products that taste great and whose origin and method of cultivation you know, here is the Pumpkin recipe!
+              Every morning, we select the best products for you from our producers and partners with one goal: <cite title="Source Title">the freshness of the products right down to your plate!</cite></footer>
+          </blockquote>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-header card-image">
+          <img src="/assets/img/statistics.jpg" alt="">
+        </div>
+        <div class="card-body">
+          <div class="card product-info">
+            <div class="card-body">
+              <h5 class="card-title">Available products in our store:</h5>
+              <p class="card-text product-result">{{ numberProductsInStore }}</p>
+            </div>
+          </div>
+          <div class="card product-info">
+            <div class="card-body">
+              <h5 class="card-title">Number of orders submited in our store:</h5>
+              <p class="card-text product-result">{{ numberOfOrders }}</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

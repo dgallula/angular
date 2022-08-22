@@ -1,0 +1,50 @@
+.main-card{
+    width: 500px;
+    height: 300px;
+    background-color:whitesmoke;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    border: 1px solid black;
+    z-index: 1;
+}
+
+
+.button_add_inDialog{
+    position: relative;
+    top: -92px;
+    left: 395px;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+#close-icon{
+    margin-left: auto;
+    order: 2;
+    font-weight: bolder;
+}
+#close-icon:hover{
+cursor: pointer;
+}
+
+button > span{
+
+    right: 2px;
+
+}
+
+.mat-card-header-text {
+    margin: 0 !important;
+}
+
+@media screen and (max-width: 480px) {
+    .main-card{
+        left: 0;
+        width: 400px;
+        top: 40%;
+        z-index: 1030;
+    }
+    
+}

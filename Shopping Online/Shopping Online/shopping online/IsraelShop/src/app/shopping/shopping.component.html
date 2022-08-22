@@ -1,0 +1,200 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+          <div class="bd-example">
+            <nav class="navbar">
+              <form class="form" [formGroup]="formSearch" (ngSubmit)="searchProductByName()">
+                <div class="row">
+                  <div class="col-4">
+                    <p class="search-title">Search Product</p>
+                  </div>
+                  <div class="col-6">
+                <input class="form-control mr-sm-2" type="search" formControlName="search" placeholder="Product name..." aria-label="Search">
+              </div>
+              <div class="col-2">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </div>
+            </div>
+
+              </form>
+            </nav>
+            </div>
+
+
+              <div #myModal class="modal my-modal" tabindex="-1">
+                <form [formGroup]="formQuantity" (ngSubmit)="addProductToCart()">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Add <b>{{ selectedProduct.name }}</b> to your cart</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()"></button>
+                    </div>
+                    <div class="modal-body">
+                      <input type="text" class="form-control" formControlName="quantity" placeholder="Quantity">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" (click)="close()" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              </div>
+
+
+    <div class="row">
+      <div class="col-4" *ngIf="isAdmin">
+        <div class="card">
+          <div class="row">
+            <div class="col-4 offset-8">
+              <button class="btn btn-primary btn-block btn-new-product" type="submit" (click)="displayFormProduct()">Add new Product</button>
+          </div>
+        </div>
+        <div class="row" *ngIf="productCreationSuccess && error == ''">
+          <div class="col-10 offset-1">
+            <div class="alert alert-success" role="alert">
+              <div>Product created with success.</div>
+            </div>
+        </div>
+      </div>
+      <div class="row" *ngIf="!productCreationSuccess && error != ''">
+        <div class="col-10 offset-1">
+          <div class="alert alert-warning" role="alert">
+            <div>{{ error }}</div>
+          </div>
+      </div>
+    </div>
+        <div class="row form-margin" *ngIf="showForm">
+          <div class="col-12">
+            <form [formGroup]="formProduct" (ngSubmit)="onSubmitForm()">
+              <div class="form-row">
+                <div class="mb-3 col-10 offset-1">
+                  <input type="text" class="form-control" formControlName="productname" placeholder="Product Name">
+                </div>
+                <div class="mb-3 col-10 offset-1">
+                  <input type="text" class="form-control" formControlName="productid" placeholder="Product Id">
+                </div>
+                <div class="mb-3 col-10 offset-1">
+                  <input type="text" class="form-control" formControlName="productprice" placeholder="Product Price">
+                </div>
+                <div class="mb-3 col-10 offset-1">
+                  <input type="text" class="form-control" formControlName="picture" placeholder="https://www.myWebsite.com/image.png">
+                </div>
+                <div class="mb-3 col-10 offset-1">
+                  <select class="form-select" aria-label="Default select example" formControlName="category">
+                    <option value="1">Milk & Eggs</option>
+                    <option value="2">Vegetables & Fruits</option>
+                    <option value="3">Meat & Fish</option>
+                    <option value="4">Wine & Drink</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row">
+              <div class="col-5 offset-4">
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="col-4" *ngIf="!isAdmin">
+            <div>
+          <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            Show my cart
+          </a>
+        </div>
+        <div class="collapse" id="collapseExample">
+          <div>
+            <h2 class="cart-title">My cart</h2>
+          </div>
+          <div class="card card-body card-bottom-space">
+            <div>
+              <div class="cart-item">
+                <div class="table-responsive">
+                  <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Action</th>
+                      <th scope="col">Product Name</th>
+                      <th scope="col">Product Price</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let product of cart;">
+                      <td><button type="button" class="btn btn-danger btn-block" (click)="removeProductFromCart(product)">X</button></td>
+                      <td> {{ product.name }}</td>
+                      <td>{{ product.price }}</td>
+                      <td>{{ product.quantity }}</td>
+                      <td>{{ product.totalPrice | currency:'ILS'}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-6 cart-title">
+              <p *ngIf="cart.length > 0">Total: <b>{{ totalPrice | currency:'ILS' }}</b></p>
+            </div>
+            <div class="col-6">
+            <a routerLink="/order-confirmation" *ngIf="cart.length > 0" class="btn btn-primary">Order</a>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="row" *ngIf="error != ''">
+          <div class="col-10 offset-1">
+            <div class="alert alert-warning" role="alert">
+              <div>{{ error }}</div>
+            </div>
+        </div>
+      </div>
+        <div class="card">
+          <div class="card">
+          <ul class="nav justify-content-center">
+            <li class="nav-item nav-style">
+              <a class="nav-link nav-style" (click)="getAllProducts()">All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-style" (click)="getProductByCategoryId(1)">Milk & Eggs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-style" (click)="getProductByCategoryId(2)">Vegetables & Fruits</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-style" (click)="getProductByCategoryId(3)">Meat & Fish</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-style" (click)="getProductByCategoryId(4)">Wine & Drink</a>
+            </li>
+          </ul>
+        </div>
+          <div class="product-data">
+          <div *ngFor="let product of productList;">
+            <div class="card product-item">
+              <img class="card-img-top" src="{{ product.img }}" alt="{{ product.name }}" width="180" height="100" class="img-fluid">
+              <div class="card-body">
+                <h5 class="card-title">{{ product.price | currency:'ILS'}}</h5>
+                <p class="card-text">{{ product.name }}</p>
+                <a *ngIf="isAdmin" (click)="selectProduct(product)" class="btn btn-primary">Update</a>
+                <a *ngIf="!isAdmin" (click)="open(product)" class="btn btn-primary">Add</a>
+              </div>
+            </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
+

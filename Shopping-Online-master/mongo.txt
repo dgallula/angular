@@ -1,0 +1,2 @@
+use shoppingOnline for creating the DB.
+mongo --> use shoppingOnline --> db check

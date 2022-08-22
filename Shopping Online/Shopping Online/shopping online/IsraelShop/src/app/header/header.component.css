@@ -1,0 +1,24 @@
+.header-text{
+  font-size: 14px;
+  font-family:Arial
+}
+
+.header-grid{
+  line-height: 0px;
+  /* border: 1px solid black; */
+  padding-top: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header-guest{
+  padding-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.header-title{
+  font-family: Arial;
+  margin-left: 5px;
+  font-weight: bolder;
+}

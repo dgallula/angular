@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row rowtop">
+    <div class="col-lg-4 col-md-8 col-sm-10 maincol">
+      <div class="card" *ngIf="showForm1">
+        <div class="alert alert-warning" role="alert" *ngIf="!registrationSuccess && error != ''">
+          <div class="errorTitle">{{ error }}</div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">SignUp - User: STEP 1</h5>
+      <form [formGroup]="formStep1" (ngSubmit)="onSubmitForm1()">
+        <div class="form-row">
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="id" placeholder="ID">
+          </div>
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="email" placeholder="Email">
+          </div>
+          <div class="mb-3 col-12">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          </div>
+          <div class="mb-3 col-12">
+            <input type="password" class="form-control" formControlName="passwordconfirm" placeholder="Password Confirm">
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-5">
+          <button type="submit" class="btn btn-primary btn-block">Continue</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    </div>
+
+    <div class="card" *ngIf="showForm2">
+      <div class="alert alert-success" role="alert" *ngIf="registrationSuccess">
+        <div class="errorTitle">Registration success.</div>
+      </div>
+      <div class="card-body" *ngIf="displayForm2">
+        <h5 class="card-title">SignUp - User: STEP 2</h5>
+      <form [formGroup]="formStep2" (ngSubmit)="onSubmitForm2()">
+        <div class="form-row">
+          <div class="mb-3 col-12">
+          <select class="form-select" aria-label="Default select example" formControlName="city">
+            <option value="Jerusalem">Jerusalem</option>
+            <option value="TelAviv">Tel Aviv</option>
+            <option value="Haifa">Haifa</option>
+            <option value="Ashdod">Ashdod</option>
+            <option value="RishonLeZion">Rishon LeZion</option>
+            <option value="PetahTikva">Petah Tikva</option>
+            <option value="BeerSheva">Beer-Sheva</option>
+            <option value="Netanya">Netanya</option>
+            <option value="Holon">Holon</option>
+            <option value="BneiBrak">Bnei Brak</option>
+          </select>
+        </div>
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="street" placeholder="Street">
+          </div>
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="name" placeholder="Name">
+          </div>
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="lastname" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-5">
+          <button type="submit" class="btn btn-primary btn-block">Sign up</button>
+        </div>
+      </div>
+      </form>
+  </div>
+  <div *ngIf="!displayForm2" class="col-12 offset-lg-3 offset-md-3 offset-sm-3 go-to-margin">
+    <a routerLink="/home" class="btn btn-success btn-block">Go to connexion page</a>
+  </div>
+    </div>
+    </div>
+  </div>
+</div>

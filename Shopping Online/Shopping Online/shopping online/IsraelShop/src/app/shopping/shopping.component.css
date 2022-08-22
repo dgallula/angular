@@ -1,0 +1,47 @@
+.search-title{
+  padding-top: 5px;
+}
+
+.btn-new-product{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.form-margin{
+  margin-bottom: 10px;
+}
+
+.product-data {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.product-item{
+margin-right: 10px;
+}
+
+.cart-item{
+  margin: 10px;
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+.cart-title{
+  text-align: center;
+}
+
+.card-bottom-space{
+  margin-bottom: 45px;
+}
+
+.my-modal{
+  margin-top: 200px;
+}
+
+.nav-style{
+  cursor: pointer;
+}

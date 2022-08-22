@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div>
+        <h2 class="cart-title">My cart</h2>
+        <a routerLink="/shopping" class="btn btn-primary back-btn">Back to purchases</a>
+      </div>
+      <div class="card card-body card-bottom-space">
+        <input type="text" class="form-control" (input)="searchProduct($event)" placeholder="Product name...">
+        <div>
+          <div class="cart-item">
+            <div class="table-responsive">
+              <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of cartTemp">
+                  <td>{{ product.name }}</td>
+                  <td>{{ product.price }}</td>
+                  <td>{{ product.quantity }}</td>
+                  <td>{{ product.totalPrice | currency:'ILS'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-6 cart-title">
+          <p *ngIf="cart.length > 0">Total: <b>{{ totalPrice | currency:'ILS' }}</b></p>
+        </div>
+    </div>
+      </div>
+    </div>
+      <div class="col-8">
+        <div class="card">
+          <h2 class="cart-title">Order</h2>
+          <div class="card-body">
+            <div class="alert alert-warning" role="alert" *ngIf="!orderSuccess && error != ''">
+              <div class="errorTitle">{{ error }}</div>
+            </div>
+      <form [formGroup]="formOrder" (ngSubmit)="onSubmitOrder()">
+        <div class="form-row">
+          <div class="mb-3 col-12">
+          <select class="form-select" aria-label="Default select example" formControlName="city">
+            <option value="Jerusalem">Jerusalem</option>
+            <option value="TelAviv">Tel Aviv</option>
+            <option value="Haifa">Haifa</option>
+            <option value="Ashdod">Ashdod</option>
+            <option value="RishonLeZion">Rishon LeZion</option>
+            <option value="PetahTikva">Petah Tikva</option>
+            <option value="BeerSheva">Beer-Sheva</option>
+            <option value="Netanya">Netanya</option>
+            <option value="Holon">Holon</option>
+            <option value="BneiBrak">Bnei Brak</option>
+          </select>
+        </div>
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="street" placeholder="Street">
+          </div>
+          <div class="mb-3 col-12">
+              <input name="someName" formControlName="selectedDate" [dpDayPicker]="config">
+          </div>
+          <div class="mb-3 col-12">
+            <input type="text" class="form-control" formControlName="creditCard" placeholder="Credit Card">
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-5">
+          <button type="submit" class="btn btn-primary btn-block">Order</button>
+        </div>
+      </div>
+      </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+

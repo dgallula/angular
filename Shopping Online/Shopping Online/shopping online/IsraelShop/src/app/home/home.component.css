@@ -1,0 +1,64 @@
+.title{
+  margin-bottom: 22px;
+}
+
+.card-image{
+  padding: 0px;
+}
+
+.card-image img{
+  width: 100%;
+}
+
+.rowtop{
+  margin-top:20px;
+}
+
+.text-style{
+font-family: Arial;
+}
+
+.form-title{
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.form-margin{
+  /* margin-left: 20px; */
+}
+
+.btn-shopping{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rowtop p{
+  font-family: Arial;
+}
+
+.first-purchase{
+  margin-left: 20px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.product-info{
+  margin-bottom: 20px;
+}
+
+.product-result{
+  text-align: center;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 22px;
+  color: green;
+}
+
+.cart-title{
+  text-align: center;
+}
+
+.btn-margin{
+  margin-bottom: 20px;;
+}

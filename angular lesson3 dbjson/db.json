@@ -1,0 +1,51 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "my samp",
+      "author": "me",
+      "id": 2
+    },
+    {
+      "author": "katy",
+      "title": "samp",
+      "id": 3
+    },
+    {
+      "author": "katy",
+      "title": "samp",
+      "id": 4
+    },
+    {
+      "author": "katy",
+      "title": "samp",
+      "id": 5
+    },
+    {
+      "author": "katy",
+      "title": "samp",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "students": [
+    {
+      "title": "json-server",
+      "author": "typicode",
+      "id": 1
+    }
+  ]
+}
